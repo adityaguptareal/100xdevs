@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index HTML</title>
+</head>
+<body>
+    <input type="text">
+    <button onclick="addtodo()">Add To Do</button>
+</body>
+<script>
+    function addtodo() {
+        const value=document.querySelector("input").value
+        const span=document.createElement("span")
+        const button=document.createElement("button")
+        const divEl=document.createElement("div")
+        span.innerHTML=value
+        button.innerHTML="Delete"
+        divEl.appendChild(span)
+        divEl.appendChild(button)
+        document.body.appendChild(divEl)
+    }
+</script>
+</html>
