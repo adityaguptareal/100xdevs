@@ -21,61 +21,61 @@ class Rectangle {
  console.log(rect)
 
 const { rejects } = require('assert');
-//  
+ 
 
-// const date=new Date()
-// console.log(date.getMonth());
-
-
-// const map=new Map()
-// map.set('name',"Aditya")
-// map.set('age',"17")
-// const firstName=map.get("name")
-// console.log(firstName);
+const date=new Date()
+console.log(date.getMonth());
 
 
+const map=new Map()
+map.set('name',"Aditya")
+map.set('age',"17")
+const firstName=map.get("name")
+console.log(firstName);
 
-// function readTheFile(sendTheFinalVale) {
+
+
+function readTheFile(sendTheFinalVale) {
     
-// }
+}
 
 
-// function doTimeCall(resolve) {
-//     console.log('hi');
+function doTimeCall(resolve) {
+    console.log('hi');
     
-// }
+}
 
 
 
-// function first() {
-//     console.log('hi');
+function first() {
+    console.log('hi');
     
-// }
+}
 
-// setTimeout(() => {
-//     first()
-//     setTimeout(() => {
-//     console.log('Hello There');
-//         setTimeout(() => {
-//            console.log('After 5 Second');
+setTimeout(() => {
+    first()
+    setTimeout(() => {
+    console.log('Hello There');
+        setTimeout(() => {
+           console.log('After 5 Second');
             
-//         }, 5000);
-//     }, 4000);
-// }, 1000);
+        }, 5000);
+    }, 4000);
+}, 1000);
 
 
-// function setTimeoutPromisified(duration) {
-//     return new Promise(function(resolve){
-//         setTimeout(resolve,duration)
-//     })
-// }
+function setTimeoutPromisified(duration) {
+    return new Promise(function(resolve){
+        setTimeout(resolve,duration)
+    })
+}
 
-// function callback() {
-//     console.log('Hi this is callback');
+function callback() {
+    console.log('Hi this is callback');
     
-// }
+}
 
-// setTimeoutPromisified(4000).then(callback)
+setTimeoutPromisified(4000).then(callback)
 
 const fs=require('fs')
 

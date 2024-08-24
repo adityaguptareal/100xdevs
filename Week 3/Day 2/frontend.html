@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index HTML</title>
+</head>
+
+<body>
+    <input type="text">
+    <button onclick="addtodo()">Add To Do</button>
+    <div id="todo"></div>
+</body>
+<script>
+    let todos = []
+    function addtodo() {
+
+        todos.push({
+            title: document.querySelector("input").value
+        })
+
+        render()
+        document.querySelector("input").value = ""
+    }
+
+    function createTodo(todos) {
+        const divEl = document.createElement("div")
+        const heading = document.createElement("h4")
+        const button = document.createElement("button")
+        heading.innerHTML = todos.title
+        button.innerHTML = "delete"
+        divEl.append(heading)
+        divEl.append(button)
+        return divEl
+
+
+    }
+
+    function render() {
+        document.querySelector("#todo").innerHTML=""
+        for (let index = 0; index < todos.length; index++) {
+            const element =createTodo(todos[index]);
+             document.querySelector("#todo").append(element)
+
+        }
+    }
+</script>
+
+</html>
