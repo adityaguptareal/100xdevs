@@ -15,6 +15,7 @@ class Rectangle {
     }
     
  }
+//  Minor fix
  
  const rect = new Rectangle(2, 4)
  const area = rect.area();
