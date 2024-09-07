@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskTide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&family=Staatliches&family=Teko:wght@300..700&display=swap');
+
+        :root {
+            --mainColor: rgb(148, 247, 0);
+            --gridline: rgb(255, 255, 255);
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+
+            color: white;
+
+            overflow-x: hidden;
+            font-family: "Montserrat", sans-serif;
+            background-color: rgb(19, 19, 19);
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.132) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.132) 1px, transparent 1px);
+            background-size: 50px 50px;
+            /* Size of the grid pattern */
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        nav ul li:hover {
+            color: var(--mainColor);
+            font-weight: bold;
+        }
+
+        header {
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        nav {
+            padding: 0px 22px;
+            width: 30vw;
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid rgba(255, 255, 255, 0.352);
+            align-items: center;
+            border-radius: 200px;
+            cursor: pointer;
+            backdrop-filter: blur(30px);
+            position: sticky;
+        }
+
+        .logo {
+            color: var(--mainColor);
+            font-family: "Teko", sans-serif;
+            font-size: 30px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 100px 0px;
+        }
+
+        #todoSection {
+            width: 30vw;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0px 105px 0px;
+            border-radius: 10px;
+            flex-direction: column;
+            align-items: center;
+        }
+        #allTasks{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 10px;
+            padding: 20px 10px 10px 20px;
+        }
+
+        #todoSection button {
+            background-color: var(--mainColor);
+            border: none;
+            font-family: "Teko", sans-serif;
+            font-size: 30px;
+            text-transform: uppercase;
+            font-weight: 600;
+
+        }
+
+        #inputSection {
+            display: flex;
+            gap: 10px;
+            border: 2px solid rgb(63, 63, 63);
+            border-radius: 50px;
+        }
+
+        #inputSection input {
+            background: none;
+            outline: none;
+            color: white;
+            font-size: 18px;
+            border: none;
+            padding: 0px 15px;
+        }
+
+        #inputSection button {
+            border-radius: 20px;
+            padding: 0px 17px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <nav class="glass">
+            <div class="logo">TaskTide</div>
+            <ul>
+                <li>Twitter</li>
+                <li>Github</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="todoSection">
+            <div id="inputSection">
+                <input type="text" class="inputBox">
+                <button id="addTaskBtn" onclick="addTodo()">Add Task</button>
+            </div>
+            <div id="allTasks"></div>
+        </div>
+    </main>
+</body>
+<script>
+    let tasks = []
+    function addTodo() {
+        tasks.push({ title: document.querySelector("input").value })
+        render()
+        document.querySelector("input").value = ""
+    }
+
+    function render() {
+        for (let i = 0; i < tasks.length; i++) {
+            const task = tasks[i]
+            const todo=createTodo(task.title)
+            
+            
+        }
+    }
+    function createTodo(task) {
+        // document.querySelector("#allTasks").innerHTML=""
+        let divEl=document.createElement("div")
+        let btn=document.createElement("button")
+        let span=document.createElement("span")
+        span.innerHTML=task
+        btn.innerHTML="Delete"
+        divEl.appendChild(span)
+        divEl.appendChild(btn)
+        document.querySelector("#allTasks").append(divEl)
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskTide</title>
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&family=Staatliches&family=Teko:wght@300..700&display=swap');
+:root{
+    --mainColor:rgb(148, 247, 0);
+    --gridline: rgb(255, 255, 255);
+}
+body{
+    margin: 0px;
+    padding: 0px;
+
+    color: white;
+
+    overflow-x: hidden;
+    font-family: "Montserrat", sans-serif;
+    background-color: rgb(19, 19, 19);
+    background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.132) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.132) 1px, transparent 1px);
+  background-size: 50px 50px; /* Size of the grid pattern */
+}
+nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+nav ul li:hover{
+    color: var(--mainColor);
+    font-weight:bold;
+}
+header{
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+nav {
+    padding: 0px 22px;
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgba(255, 255, 255, 0.352);
+    align-items: center;
+    border-radius: 200px;
+    cursor: pointer;
+    backdrop-filter: blur(30px);
+    position: sticky;
+}
+.logo {
+    color: var(--mainColor);
+    font-family: "Teko", sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 100px 0px;
+}
+button{
+    cursor: pointer;
+}
+#toDoWorkSpace {
+    height: fit-content;
+    width: 50vw;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    z-index: 100;
+}
+#heading {
+    font-size: 90px;
+    font-weight: 400;
+    font-family: "Raleway", sans-serif;
+    text-align: center;
+    margin: 0px;
+}
+#StartBtn {
+    background-color: var(--mainColor);
+    border: none;
+    padding: 14px 25px;
+    border-radius: 31px;
+    font-size: 30px;
+    color: #191919;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: var(--mainColor);
+  border-radius: 50%;
+  display: inline-block;
+}
+.glow-particle {
+  width: 50px; 
+  height: 50px; 
+  background-color: var(--mainColor); 
+ border-radius: 50%; 
+  box-shadow: 0 0 10px var(--mainColor); 
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+}
+
+#toDoWorkSpace *{
+    cursor: pointer;
+}
+
+.para{
+    max-width: 600px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.703);
+
+}
+        </style>
+</head>
+<body>
+    <header>
+
+        <nav class="glass">
+            <div class="logo">TaskTide</div>
+            <ul>
+                <li>Twitter</li>
+                <li>Github</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- <div class="glow-particle"></div> -->
+        <div id="toDoWorkSpace" class="">
+            <h1 id="heading">Streamline Your Day Effortlessly <span class="circle"></span></h1>
+            <span class="para">Simplify your life with our intuitive to-do app. Effortlessly manage tasks and stay on top of your goals!</span>
+            <a href="./TodoList.html" id="StartBtn">Start TaskTide</a>  
+        </div>
+    </main>
+    </body>
+    </html>
