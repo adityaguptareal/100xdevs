@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+</head>
+
+<body>
+    <label for="">username: </label><input type="text" name="name" id="username"> <br>
+    <label for="">password: </label><input type="text" name="password" id="password"> <br>
+    <button type="submit" onclick="signup()">Sign up</button>
+    <button type="submit" onclick="signin()">Sign in</button>
+    <br>
+    <div id="userInfo"></div>
+    <script>
+        async function signup() {
+            let username = document.getElementById("username").value
+            let password = document.getElementById("password").value
+            let requestURl = await fetch("http://localhost:5000/signup", {
+                method: "POST",
+                headers: {
+                    "content-Type": "Application/json"
+                },
+                body: JSON.stringify({ username: username, password: password })
+            })
+            let response = await requestURl.json()
+            if (response["msg"] == "You Signed up Succesfully") {
+                alert("You have signuped Succefully")
+            }
+            else {
+                alert("Someting Went Wrong !")
+            }
+        //   document.getElementById("username").value=""
+        //   document.getElementById("password").value=""
+     
+        }
+      async function signin() {
+            let username = document.getElementById("username").value
+            let password = document.getElementById("password").value
+            let requestURl = await fetch("http://localhost:5000/signin",{
+                method:"POST",
+                headers:{"content-Type":"Application/json"},
+                body:JSON.stringify({username:username,password:password})
+            })
+            let response=await requestURl.json()
+            localStorage.setItem("token",response.token)
+            console.log(response.token);
+                
+        }
+
+       async function getUserInformation(){
+        //    let token=localStorage.getItem("token")
+           let requestURl=await fetch("http://localhost:5000/me",{
+            method:"GET",
+            headers:{
+                token:localStorage.getItem("token")
+            }
+           })
+           let response= await requestURl.json()
+           if(response.username && response.password){
+        document.getElementById("userInfo").innerHTML=`<p>username:${response.username} and password:${response.password}`
+            
+           }
+           else{
+            console.log('Not available');
+            
+           }
+        console.log(response);
+        
+           
+        }
+        getUserInformation()
+    </script>
+</body>
+
+</html>
