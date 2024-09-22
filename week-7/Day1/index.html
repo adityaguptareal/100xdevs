@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoApp</title>
+</head>
+
+<body>
+    <label for="">Name</label> <br>
+    <input type="text" name="name" id="name"><br>
+    <label for="">Email</label><br>
+    <input type="email" name="email" id="email"><br>
+    <label for="">Password</label> <br>
+    <input type="password" name="password" id="password"> <br>
+    <br>
+    <button type="submit" id="Signup" onclick="Signup()">Signup</button>
+    <script>
+       async function Signup() {
+            const name = document.getElementById("name").value
+            const email = document.getElementById("email").value
+            const password = document.getElementById("password").value
+
+            const requestUrl=await fetch("http://localhost:3000/signup",{
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify({name:name,email:email,password:password})
+            })
+            const response= await requestUrl.json()
+            alert("Sign Up Succesful!");
+            console.log(response);
+            
+            
+        }
+
+
+    </script>
+</body>
+
+</html>
