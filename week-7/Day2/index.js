@@ -1,4 +1,5 @@
 const express = require("express");
+const {z}=require("zod")
 const bcrypt = require("bcrypt")
 const { UserModel, TodoModel } = require("./db");
 const { auth, JWT_SECRET } = require("./auth");
@@ -11,15 +12,30 @@ const app = express();
 app.use(express.json());
 
 app.post("/signup", async function (req, res) {
+    const requiredBody=z.object({
+        email:z.string(),
+        name:z.string(),
+        // adding check password should be string with mininum of 6 and maximum of 8 character.
+        password:z.string().min(6).max(8)
+    })
+
+    const parsebody=requiredBody.safeParse(req.body)
+    if(!parsebody.success){
+        res.json({
+            "Error":"Invalid Format",
+            "Exact Error":parsebody.error
+        })
+        return
+    }
+    
+    
     const email = req.body.email;
     const password = req.body.password;
     const name = req.body.name;
 
-    const hashPassword = await bcrypt.hash(password, 2)
-    console.log(hashPassword);
-    
-
-
+    // creating a hash passowrd
+    const hashPassword = await bcrypt.hash(password, 8)
+    // storing user data in the database
     await UserModel.create({
         email: email,
         password: hashPassword,
@@ -29,6 +45,8 @@ app.post("/signup", async function (req, res) {
     res.json({
         message: "You are signed up"
     })
+
+   
 });
 
 
@@ -36,12 +54,25 @@ app.post("/signin", async function (req, res) {
     const email = req.body.email;
     const password = req.body.password;
 
+    // Finding the user email from the db
     const response = await UserModel.findOne({
         email: email,
-        password: password,
     });
 
-    if (response) {
+    
+
+    if(!response){
+        res.status(403)
+        .json({
+            Message:"User Not Found"
+        })
+    }
+
+    // Checking the hash password is valid or not
+const passwordMatch= await bcrypt.compare(password,response.password)
+
+
+    if (passwordMatch) {
         const token = jwt.sign({
             id: response._id.toString()
         }, JWT_SECRET);
