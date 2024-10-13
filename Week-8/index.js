@@ -1,30 +1,29 @@
 const express=require("express")
-const app= express()
+const app=express()
+const {userRoutes}=require("./routes/userRoutes")
+const {courseRoutes}=require("./routes/coursesRoutes")
+const {adminRoutes}=require("./routes/adminRoutes")
+const mongoose=require("mongoose")
+app.use(express.json())
+
 const port=3000
 
+// Version 1 api
+app.use("/api/v1/user",userRoutes)
+app.use("/api/v1/courses",courseRoutes)
+app.use("/api/v1/admin",adminRoutes)
 
-app.post("/user/signup",function(req,res){
-    res.send("user endpoint")
-})
-
-app.post("/user/signin",function(req,res){
-    res.send("user endpoint")
-})
-app.get("user/purchases/courses",function(req,res){
-    res.send("Course Endpoint")
-})
-
-app.get("course/purchase",function(req,res){
-    res.send("Course Endpoint")
-})
-
-app.get("/courses",function(req,res){
-    res.send("Course Endpoint")
-})
-
-
-
-app.listen(port,()=>{
-    console.log('App is running at port', port);
-    
-})
+async function main() {
+  try {
+    await mongoose.connect("mongodb+srv://adityaguptareal:LK9dhOMRR2Zyy4hc@cluster0.3rcjj.mongodb.net/CodePedia")
+ } catch (error) {
+     console.log(error);
+     
+ }
+ 
+ app.listen(port,()=>{
+     console.log('App is running at', port);
+     
+ })
+}
+main()

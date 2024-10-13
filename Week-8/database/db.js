@@ -2,7 +2,6 @@ const mongoose=require("mongoose")
 const Schema=mongoose.Schema
 const objectId=mongoose.Types.ObjectId
 
-const dbConnectionString=mongoose.connect("mongodb+srv://adityaguptareal:LK9dhOMRR2Zyy4hc@cluster0.3rcjj.mongodb.net/CodePedia")
 
 const userSchema= new Schema({
     "email":{type:String, unique:true},
