@@ -4,7 +4,8 @@ const { z, ParseStatus, ZodString } = require("zod")
 const { userModel } = require("../database/db")
 const bcrypt = require("bcrypt")
 const jsonwebtoken = require("jsonwebtoken")
-const JWT_SECRET = "SceretKey"
+const {JWT_SECRET_USER}=require("../config") 
+const {userMiddleware}=require("../middleware/userAuthenication")
 
 userRoutes.post("/signup", async function (req, res) {
     const requiredData=z.object({
@@ -66,7 +67,7 @@ const passwordCheck= await bcrypt.compare(password,userCheck.password)
 if(passwordCheck){
     const token=jsonwebtoken.sign({
         idToken:userCheck._id
-    },JWT_SECRET)
+    },JWT_SECRET_USER)
     res.json({message:"signin successfully",idToken:token})
 }
 else{
@@ -75,7 +76,7 @@ else{
 
 
 })
-userRoutes.get("/courses", function (req, res) {
+userRoutes.get("/courses",userMiddleware, function (req, res) {
     res.send("courses Route")
 })
 
