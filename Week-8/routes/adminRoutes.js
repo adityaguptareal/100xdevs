@@ -121,6 +121,8 @@ adminRoutes.put("/course", adminMiddleware, async function (req, res) {
 adminRoutes.get("/course/bulk", adminMiddleware, async function (req, res) {
     const adminID = req.adminId
     const getCourses = await courseModel.find({
+
+// Testing API's for deployment 
         creatorId:adminID
     })
 
