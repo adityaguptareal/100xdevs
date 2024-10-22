@@ -136,3 +136,4 @@ adminRoutes.get("/course/bulk", adminMiddleware, async function (req, res) {
 module.exports = {
     adminRoutes: adminRoutes
 }
+// Trying to Optimise the code
