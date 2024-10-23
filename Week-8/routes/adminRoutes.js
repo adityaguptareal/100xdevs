@@ -133,6 +133,26 @@ adminRoutes.get("/course/bulk", adminMiddleware, async function (req, res) {
     })
 })
 
+adminRoutes.delete("/course/delete", adminMiddleware, async function(req,res){
+    const adminID = req.adminId
+    const courseID=req.body.courseID
+   try {
+    const checkingUser= await courseModel.deleteOne({
+        creatorId:adminID,
+        _id:courseID
+    })
+    res.json({
+        message:"Course is Deleted",
+
+    })
+} catch (error) {
+    res.json({
+        message:`Cause Error ${error}`
+    })
+   }
+    
+})
+
 module.exports = {
     adminRoutes: adminRoutes
 }
