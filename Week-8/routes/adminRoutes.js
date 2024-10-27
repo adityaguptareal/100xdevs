@@ -156,4 +156,3 @@ adminRoutes.delete("/course/delete", adminMiddleware, async function(req,res){
 module.exports = {
     adminRoutes: adminRoutes
 }
-// Trying to Optimise the code
