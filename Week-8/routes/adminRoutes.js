@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt")
 const jsonwebtoken = require("jsonwebtoken")
 const { adminModel, courseModel } = require("../database/db")
 const { z } = require("zod")
-const { JWT_SECRET_AMDIN } = require("../config")
+const { JWT_SECRET_AMDIN } = require("../config.js")
 const { adminMiddleware } = require("../middleware/adminAuthenication")
 
 adminRoutes.post("/signup", async function (req, res) {
