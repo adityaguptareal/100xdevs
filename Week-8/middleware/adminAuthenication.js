@@ -1,5 +1,5 @@
 const jwt=require("jsonwebtoken")
-const {JWT_SECRET_AMDIN}=require("../config")
+const {JWT_SECRET_AMDIN}=require("../config.js")
 
 function adminMiddleware(req,res,next) {
      const token=req.headers.token
