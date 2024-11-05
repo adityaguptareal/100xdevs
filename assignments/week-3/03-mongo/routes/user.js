@@ -56,7 +56,6 @@ router.get('/purchasedCourses', userMiddleware, async(req, res) => {
     const allUserCourses=await Course.find({
         _id:user.purchasedCourses
     })
-    console.log(allUserCourses);
     res.json({
         allUserCourses:allUserCourses
     })
