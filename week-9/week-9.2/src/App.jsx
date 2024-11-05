@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 
-{*code Revision*}
+
 
 function App() {
   const [counterVisible, setCounterVisible] = useState(true);
