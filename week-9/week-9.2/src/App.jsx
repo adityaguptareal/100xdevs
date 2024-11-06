@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-
-
-
 function App() {
   const [counterVisible, setCounterVisible] = useState(true);
 
@@ -10,8 +7,7 @@ function App() {
     const interval = setInterval(() => {
       setCounterVisible((c) => !c);
     }, 5000);
-
-    // Cleanup the interval when the component unmounts
+    
     return () => clearInterval(interval);
   }, []);
 
@@ -33,7 +29,6 @@ function Counter() {
       setCount(c => c + 1);
     }, 1000);
 
-    // Cleanup the interval when the component unmounts
     return () => clearInterval(interval);
   }, []);
 
