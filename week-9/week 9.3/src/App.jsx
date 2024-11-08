@@ -21,4 +21,14 @@ function PostComponent() {
   );
 }
 
+function ReviewComponent(){
+  return(
+    <>
+    <div style={{backgroundColor:"red", width:200, height:200}}>
+      <img src="" alt="" />
+      <div>Desceription</div>
+    </div>
+    </>
+  )
+}
 export default App;
