@@ -1,22 +1,26 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 function App() {
-  const [count, setCount] = useState([0])
+  const [currentTab, setcurrentTab] = useState(1)
+  const [tabData, setTabData] = useState({})
+  const [loading, setLoading] = useState(true)
+
+  useEffect(function () {
+    setLoading(true)
+    fetch('https://jsonplaceholder.typicode.com/todos/' + currentTab)
+    .then(async (res)=>{
+      const json= await res.json()
+      setTabData(json)
+      setLoading(false)
+    })
+  }, [currentTab])
   return (
     <>
-      <div style={{ position: "relative", width: '100px', height: "100px" }}>
-        <img src="https://cdn-icons-png.flaticon.com/512/455/455665.png" style={{ height: 100, width: 100, position: "releative", left: 0 }} alt="" />
-        <div style={{
-          borderRadius: 500, display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "red", height: 30, width: 30, position: "absolute",
-          top: 0,
-          right: -10
-        }}>{count}</div>
-      </div>
-
-      <div style={{ marginLeft: 200 }}>
-        <button onClick={() => (setCount(parseInt(count) + 1))}>Counter</button>
-      </div>
-
+      <button onClick={() => setcurrentTab(1)} style={{ color: currentTab == 1 ? "red" : "black" }}>Todo #1</button>
+      <button onClick={() => setcurrentTab(2)} style={{ color: currentTab == "2" ? "red" : "black" }}>Todo #2</button>
+      <button onClick={() => setcurrentTab(3)} style={{ color: currentTab == "3" ? "red" : "black" }}>Todo #3</button>
+      <button onClick={() => setcurrentTab(4)} style={{ color: currentTab == 4 ? "red" : "black" }}>Todo #4</button>
+      <br />
+      {loading?<div>loading..</div>:tabData.title}
     </>
   )
 }
