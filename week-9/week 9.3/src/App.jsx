@@ -1,29 +1,27 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
-
+import { useState } from "react";
+import { PostComponent } from "./PostComponent";
 function App() {
-  return (
-    <>
-      <ToggleMessage />
-    </>
-  );
-}
-// const style = {width: 200, backgroundColor: "white", borderRadius: 10, borderColor: "gray", borderWidth: 1, padding: 20 }
-const ToggleMessage = () => {
-  const [isVisible, setIsVisible] = useState(true)
-  function toggle() {
-    setIsVisible(!isVisible)
+  const [posts, setposts] = useState([])
+  const postRendering = posts.map((post, index) => (
+    <PostComponent name={post.name} key={index} subtitle={post.subtitle} time={post.time} description={post.description} image={post.image}></PostComponent>
+  ))
+  function addPost() {
+
+    setposts([...posts, {
+      name: "harkirat",
+      subtitle: "10000 followers",
+      time: "2m ago",
+      image: "https://appx-wsb-gcp-mcdn.akamai.net.in/subject/2023-01-17-0.17044360120951185.jpg",
+      description: "What to know how to win big? Check out how these folks won $6000 in bounties."
+    }])
   }
   return (
     <>
-      <button onClick={toggle}>ToggleMessage</button>
-      {isVisible && <p>This is conditionally rendering</p>}
+      <button onClick={addPost}>Add Post</button>
+      <div style={{ backgroundColor: "gray", height: '100vh', width: "100vw", display: "flex", flexDirection:"column", justifyContent: "center", alignItems: 'center' }}>
+        {postRendering}
+      </div>
     </>
   )
 }
-
-
-
-export default App;
+export default App
