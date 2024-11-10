@@ -1,5 +1,5 @@
 const jwt=require("jsonwebtoken")
-const {JWT_SECRET_AMDIN}=require("../config.js")
+const JWT_SECRET_AMDIN=process.env.JWT_SECRET_AMDIN
 
 function adminMiddleware(req,res,next) {
      const token=req.headers.token

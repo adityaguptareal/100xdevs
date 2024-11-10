@@ -4,7 +4,9 @@ const {userRoutes}=require("./routes/userRoutes")
 const {courseRoutes}=require("./routes/coursesRoutes")
 const {adminRoutes}=require("./routes/adminRoutes")
 const mongoose=require("mongoose")
+require("dotenv").config()
 app.use(express.json())
+const MONGOODB_URL=process.env.MONGOODB_URL
 
 const port=3000
 
@@ -15,7 +17,7 @@ app.use("/api/v1/admin",adminRoutes)
 
 async function main() {
   try {
-    await mongoose.connect("mongodb+srv://adityaguptareal:LK9dhOMRR2Zyy4hc@cluster0.3rcjj.mongodb.net/CodePedia")
+    await mongoose.connect(MONGOODB_URL)
  } catch (error) {
      console.log(error);
      

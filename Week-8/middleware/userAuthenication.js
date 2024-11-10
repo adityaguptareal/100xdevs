@@ -1,5 +1,5 @@
 const jwt=require("jsonwebtoken")
-const {JWT_SECRET_USER}=require("../config.js")
+const JWT_SECRET_USER=process.env.JWT_SECRET_USER
 
 function userMiddleware(req,res,next) {
      const token=req.headers.token
@@ -9,7 +9,7 @@ function userMiddleware(req,res,next) {
         next()
      }
      else{
-        res.status.json({
+        res.statuS(401).json({
             message:"You are not signed in"
         })
      }
