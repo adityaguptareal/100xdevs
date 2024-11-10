@@ -1,28 +1,33 @@
-import { Children, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import React from "react";
 function App() {
-  const [count, setCount] = useState(0)
+  const todos = [{
+    title: "Complete the Assignment",
+    done: true
+  }, {
+    title: "College Work",
+    done: true
+  }, {
+    title: "Badminton",
+    done: false
+  }, {
+    title: "Exercise",
+    done: true
+  },]
+
 
   return (
     <>
-    <Card>
-      <div style={{color:'green',}}>
-        What do you want to post <br />
-        <input type="text" />
-      </div>
-    </Card>
+    <div>
+      {todos.map((todo, index) => <Todo title={todo.title} done={todo.done} key={index}></Todo>)}
+    </div>
     </>
   )
 
-  function Card({children}) {
-    return <div style={{background:"white",borderRadius:"10",color:"black",padding:"10", margin:"10"}}>
-      {children}
-    </div>
-    
+  function Todo({ title, done }) {
+    return (
+      <div>{title}-{done ? "Completed" : "Not Completed"}</div>
+    )
+
   }
 }
-
 export default App
