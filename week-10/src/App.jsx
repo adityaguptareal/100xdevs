@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import './App.css'
 
 function App() {
@@ -6,6 +6,11 @@ function App() {
   return (
     <>
       <BrowserRouter>
+    <div>
+      <Link to="/">Allen |</Link> 
+      <Link to="/Class11">Class 11 |</Link>
+      <Link to="/Class12">Class 12 |</Link>
+    </div>
         <Routes>
           <Route path='/' element={<Allen/>} />
           <Route path='/Class11' element={<Class11/>} />
