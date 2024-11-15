@@ -1,27 +1,32 @@
-import { useState } from 'react'
+import { useState, useContext, createContext } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+const BulbContext = createContext()
+
 function App() {
+  const [bulb, setbulb] = useState(false)
   return (
     <>
-      <LightBulb></LightBulb>
+      <BulbContext.Provider value={{ bulb: bulb, setbulb: setbulb }}>
+        <LightBulb></LightBulb>
+      </BulbContext.Provider>
     </>
   )
 }
 
 function LightBulb() {
-  const [bulb, setbulb] = useState(false)
   return (
     <>
-      <BulbState bulb={bulb}></BulbState>
-      <ToggleButton setbulb={setbulb} bulb={bulb}></ToggleButton>
+      <BulbState ></BulbState>
+      <ToggleButton></ToggleButton>
     </>
   )
 }
 
-function BulbState({bulb}) {
+function BulbState() {
+  const { bulb } = useContext(BulbContext)
   return (
     <>
       {bulb ? "Bulb is on" : "Bulb is off"}
@@ -29,11 +34,12 @@ function BulbState({bulb}) {
   )
 }
 
-function ToggleButton({setbulb}) {
+function ToggleButton() {
+  const { setbulb } = useContext(BulbContext)
   return (
     <>
-    <br />
-     <button onClick={()=>setbulb(currentState=>!currentState)}>Toggle Button</button>
+      <br />
+      <button onClick={() => setbulb(currentState => !currentState)}>Toggle Button</button>
     </>
   )
 }
