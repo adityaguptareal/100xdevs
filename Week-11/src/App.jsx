@@ -1,31 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import { useFetch } from "./hooks/UseFetch";
-
-
-// function useCounter() {
-//   const [count, setCount] = useState(0)
-//   function increaseCount() {
-//     setCount(c => c + 1)
-//   }
-//   return {
-//     count: count,
-//     increaseCount: increaseCount
-//   }
-// }
+import { usePrev } from "./hooks/UsePrev";
 
 function App() {
-  const [currentPost, setCurrentPost] = useState(1)
-  const { post, loading } = useFetch('https://jsonplaceholder.typicode.com/todos/' + currentPost,5)
-  // const{count,increaseCount}=useCounter()
+  const [count,setCount]=useState(0)
+  const previousValue=usePrev(count)
   return (
     <>
-      {/* <button onClick={increaseCount}>Counter {count}</button> */}
-      <button onClick={() => setCurrentPost(1)}>Post 1</button>
-      <button onClick={() => setCurrentPost(2)}>Post 2</button>
-      <button onClick={() => setCurrentPost(3)}>Post 3</button>
-
-      {loading ? <div>Loading...</div> : <div>{post.title}</div>}
+    <p>Counter value {count}</p>
+    <button onClick={()=>{setCount((c)=>c+1)}}>Increae Value</button>
+    <p>Previous value {previousValue}</p>
 
     </>
   )
