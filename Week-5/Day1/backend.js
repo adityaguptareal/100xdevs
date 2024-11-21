@@ -3,6 +3,7 @@ const app=express()
 const port=3000
 app.get("/",function(req,res){
     res.send("This is a Calculator Backend")
+    // Simple Calculator functionality
 })
 
 app.get("/add/:a/:b",function(req,res){
