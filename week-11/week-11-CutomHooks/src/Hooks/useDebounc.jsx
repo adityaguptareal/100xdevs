@@ -2,13 +2,36 @@ import React from 'react';
 import { useRef } from 'react';
 import { useState } from 'react';
 
-function useDebounce(originalfn) {
-  const currentClock = useRef()
-  const fn = () => {
-    clearTimeout(currentClock.current)
-    currentClock.current = setTimeout(originalfn, 200)
+
+
+function useDebounce(orignalFn){
+  const currentClock=useRef()
+  const fn=()=>{
+    clearInterval(currentClock.current)
+  currentClock.current=setTimeout(orignalFn,500)
+
+}
+return fn
+
+}
+
+
+
+function DebounceHook() {
+
+  function callFunction(){
+fetch('https://jsonplaceholder.typicode.com/posts/1')
   }
-  return fn
+
+const debounceHook=useDebounce(callFunction)
+
+
+  return (
+    <div>
+<input type='text' onChange={debounceHook}/>
+
+    </div>
+  )
 }
 
 function DebounceHook() {
