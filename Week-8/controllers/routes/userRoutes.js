@@ -2,11 +2,11 @@
 const { Router } = require("express")
 const userRoutes = Router()
 const { z } = require("zod")
-const { userModel, purchaseModel, courseModel } = require("../database/db")
+const { userModel, purchaseModel, courseModel } = require("../../models/db.js")
 const bcrypt = require("bcrypt")
 const jsonwebtoken = require("jsonwebtoken")
-const { JWT_SECRET_USER } = require("../config.js")
-const { userMiddleware } = require("../middleware/userAuthenication")
+const { JWT_SECRET_USER } = require("../../config.js")
+const { userMiddleware } = require("../middleware/userAuthenication.js")
 
 userRoutes.post("/signup", async function (req, res) {
     const requiredData = z.object({

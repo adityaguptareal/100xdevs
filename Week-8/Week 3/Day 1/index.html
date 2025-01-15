@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+   .Task {
+    display: flex;
+    gap: 15px;
+    margin: 10px;
+}
+</style>
+<body>
+    <h1>To Do List</h1>
+    <!-- <h4 id="task1" onclick="delteTodo()">1. Go to Gym <button>Delete</button></h4>
+    <h4  id="task2" onclick="delteTodo()">2. Take Class <button>Delete</button></h4>
+    <h4 id="task3" onclick="delteTodo()">3 Go <button>Delete</button></h4> -->
+    <input type="text" placeholder="Type your Task"></input>
+    <button onclick="AddTask()">Add Task</button>
+</body>
+   <script>
+    function AddTask() {
+        let input=document.querySelector("input")
+        input.value=input.value.trim()
+        if (input.value===" ") {
+            alert("please enter the task")
+            return
+        }
+        else{
+
+            let task=document.createElement("div")
+            task.classList="Task"
+            task.innerHTML=`<div class="taskName">${input.value}</div><button onclick="delteTodo()" class=deleteButton>Delete</button>`
+            document.querySelector("body").appendChild(task)
+            input.value=" "
+        }
+    }
+    // Selecting Elements using ID
+    let task3=document.querySelector("#task3")
+    console.log(task3);
+    
+    function delteTodo() {
+        const Element=document.querySelector(".Task")
+        Element.parentNode.removeChild(Element)
+    }
+
+   </script>
+    
+</html>
