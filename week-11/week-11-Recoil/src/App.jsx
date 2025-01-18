@@ -2,7 +2,7 @@ import React from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { RecoilRoot,useRecoilState,useRecoilValue } from 'recoil'
+import { RecoilRoot,useRecoilState,useRecoilValue,useSetRecoilState } from 'recoil'
 import {counterAtom} from './store/Counter'
 
 function App() {
@@ -33,7 +33,7 @@ function CurrentCount(){
   )
 }
 function Increase() {
-  const [count,setCount] = useRecoilState(counterAtom)
+const setCount=useSetRecoilState(counterAtom)
   function increase() {
     setCount(c => c + 1)
   }
