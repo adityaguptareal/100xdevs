@@ -44,7 +44,7 @@ const setCount=useSetRecoilState(counterAtom)
 
 function Decrease() {
   
-  const [count,setCount] = useRecoilState(counterAtom)
+  const setCount=useSetRecoilState(counterAtom)
   function decrease() {
     setCount(c => c - 1)
   }
