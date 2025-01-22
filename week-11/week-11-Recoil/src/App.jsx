@@ -1,41 +1,50 @@
-import React from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { RecoilRoot,useRecoilState,useRecoilValue,useSetRecoilState } from 'recoil'
-import {counterAtom} from './store/Counter'
+// import { RecoilRoot, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+// import { counterAtom } from './store/Counter'
 
 function App() {
 
   return (
     <>
-      <RecoilRoot>
-        <Counter />
-      </RecoilRoot>
+
+      <Counter />
+
     </>
   )
 }
 
 function Counter() {
-    return (
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    setInterval(() => {
+      setCount(count + 1)
+    }, 3000)
+  }, [])
+
+  return (
     <>
-      <CurrentCount/>
-      <Increase/>
-      <Decrease/>
+      <CurrentCount />
+      <Increase />
+      <Decrease />
     </>
 
   )
 }
-function CurrentCount(){
-  const count=useRecoilValue(counterAtom)
-  return(
-    <div>{count}</div>
+
+const CurrentCount = function CurrentCount() {
+  // const count = useRecoilValue(counterAtom)
+  return (
+    <div>1</div>
   )
 }
 function Increase() {
-const setCount=useSetRecoilState(counterAtom)
+  // const setCount = useSetRecoilState(counterAtom)
   function increase() {
-    setCount(c => c + 1)
+    // setCount(c => c + 1)
   }
   return (
     <button onClick={increase}>Increase</button>
@@ -43,10 +52,10 @@ const setCount=useSetRecoilState(counterAtom)
 }
 
 function Decrease() {
-  
-  const setCount=useSetRecoilState(counterAtom)
+
+  // const setCount = useSetRecoilState(counterAtom)
   function decrease() {
-    setCount(c => c - 1)
+    // setCount(c => c - 1)
   }
   return (
     <button onClick={decrease}>Decrease</button>
