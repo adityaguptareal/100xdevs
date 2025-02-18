@@ -1,64 +1,49 @@
-import React, { memo, useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-// import { RecoilRoot, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
-// import { counterAtom } from './store/Counter'
+import React from "react";
+import { useState } from "react";
+import { RecoilRoot, useRecoilValue, useSetRecoilState } from "recoil";
+import { counterAtom } from "./store/Counter";
 
 function App() {
-
   return (
-    <>
-
+    <RecoilRoot>
       <Counter />
+    </RecoilRoot>
 
-    </>
   )
 }
-
 function Counter() {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    setInterval(() => {
-      setCount(count + 1)
-    }, 3000)
-  }, [])
-
+  // const [count, setCount] = useState(0)
+  const count = useRecoilValue(counterAtom)
   return (
     <>
-      <CurrentCount />
+      {count}
       <Increase />
       <Decrease />
     </>
-
   )
 }
 
-const CurrentCount = function CurrentCount() {
-  // const count = useRecoilValue(counterAtom)
-  return (
-    <div>1</div>
-  )
-}
 function Increase() {
-  // const setCount = useSetRecoilState(counterAtom)
-  function increase() {
-    // setCount(c => c + 1)
+  const setCount = useSetRecoilState(counterAtom)
+  function increaseCount() {
+    setCount(c => c + 1)
+
   }
   return (
-    <button onClick={increase}>Increase</button>
+    <button onClick={increaseCount}>Increase</button>
   )
+
 }
 
 function Decrease() {
+  const setCount = useSetRecoilState(counterAtom)
+  function decraseCount() {
+    setCount(c => c - 1)
 
-  // const setCount = useSetRecoilState(counterAtom)
-  function decrease() {
-    // setCount(c => c - 1)
   }
   return (
-    <button onClick={decrease}>Decrease</button>
+    <button onClick={decraseCount}>Decrease</button>
   )
 }
+
 export default App
