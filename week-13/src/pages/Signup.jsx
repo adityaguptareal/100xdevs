@@ -1,0 +1,60 @@
+import { React, useState, useEffect } from 'react'
+import { Presentation, SendToBack } from 'lucide-react';
+import Button from '../Components/Button';
+import toast from 'react-hot-toast';
+
+function Signup() {
+    const [btn, setbtn] = useState(true)
+    const [data, setData] = useState("")
+    useEffect(() => {
+
+        if(data==""){
+            setbtn(true)
+        }
+        else(
+            setbtn(false)
+        )
+    }, [data])
+    
+  
+    return (
+        <div className='h-screen w-screen bg-primary flex justify-start py-20 flex-col items-center'>
+            <main className='flex flex-col gap-5 justify-center items-center'>
+                <header className='flex text-3xl items-center text-center '>
+                    <div className='px-2'>
+                        <Presentation size={"40"} />
+                    </div>
+                    <span className='text-accent w-fit'>Webinar</span>
+                    .gg
+                </header>
+                <div className='text-[30px] font-semibold py-16'>Verify Your Age</div>
+                <p className='text-text text-center '>Please confirm your birth year. This data will not be stored. </p>
+
+                <input className='outline-none bg-secondary text-slate-400 w-9/12  px-3 py-3 rounded-lg' placeholder='Your Birth Year' value={data} type="text" name="" id=""
+                    onChange={
+                        (e) => {
+                            setData(e.target.value)
+
+                        }} />
+
+                        
+                <Button onClick={()=>{
+                    
+                    if(data==""){
+                        console.log("Get clicked")
+                        toast.error("Please Enter DOB")
+                    }
+                    else{
+                        console.log("Get clicked")
+                        toast.success("Succefully Submited")
+                    }
+                }} btnStatus={btn} >Continue</Button>
+
+            </main>
+
+        </div>
+    )
+
+}
+
+export default Signup
