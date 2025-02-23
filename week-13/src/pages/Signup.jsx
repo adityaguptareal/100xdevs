@@ -18,16 +18,16 @@ function Signup() {
     
   
     return (
-        <div className='h-screen w-screen bg-primary flex justify-start py-20 flex-col items-center'>
+        <div className='h-screen w-screen bg-primary flex justify-start py-30 flex-col items-center'>
             <main className='flex flex-col gap-5 justify-center items-center'>
                 <header className='flex text-3xl items-center text-center '>
-                    <div className='px-2'>
+                    <div className='px-4'>
                         <Presentation size={"40"} />
                     </div>
                     <span className='text-accent w-fit'>Webinar</span>
                     .gg
                 </header>
-                <div className='text-[30px] font-semibold py-16'>Verify Your Age</div>
+                <div className='text-[40px] font-bold py-16'>Verify Your Age</div>
                 <p className='text-text text-center '>Please confirm your birth year. This data will not be stored. </p>
 
                 <input className='outline-none bg-secondary text-slate-400 w-9/12  px-3 py-3 rounded-lg' placeholder='Your Birth Year' value={data} type="text" name="" id=""
