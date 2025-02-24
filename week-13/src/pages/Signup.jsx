@@ -42,7 +42,7 @@ function Signup() {
                     
                     if(data==""){
                         console.log("Get clicked")
-                        toast.error("Please Enter DOB")
+                        toast.error("Please Enter Date of Birthh")
                     }
                     else{
                         console.log("Get clicked")
